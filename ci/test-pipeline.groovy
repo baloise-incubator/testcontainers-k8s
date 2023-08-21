@@ -20,9 +20,11 @@ podTemplate(yaml: '''
         - name: kubedock
           image: joyrex2001/kubedock:0.12.0
           command:
-            - kubedock server --runas-user 1000
+            - kubedock
           args:
-            - 99d
+            - server
+            - '--runas-user'
+            - '1000'
           securityContext:
             runAsUser: 1000
           ports:
