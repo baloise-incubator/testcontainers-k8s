@@ -38,11 +38,13 @@ podTemplate(yaml: '''
 
         sh 'hostname'
 
+        sh 'git clone https://github.com/baloise-incubator/testcontainers-k8s.git'
+
         sh 'export TESTCONTAINERS_RYUK_DISABLED=true'
         sh 'export TESTCONTAINERS_CHECKS_DISABLE=true'
         sh 'export DOCKER_HOST=tcp://localhost:2475'
 
-        sh 'cd examples/pure-testcontainers'
+        sh 'cd testcontainers-k8s/examples/pure-testcontainers'
         sh 'mvn test'
       }
     }
