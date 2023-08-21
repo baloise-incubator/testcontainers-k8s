@@ -33,6 +33,9 @@ podTemplate(yaml: '''
     node(POD_LABEL) {
       container('maven') {
         echo POD_CONTAINER // displays 'maven'
+        sh 'pwd'
+        sh 'ls -al'
+
         sh 'hostname'
 
         sh 'export TESTCONTAINERS_RYUK_DISABLED=true'
