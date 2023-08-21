@@ -1,6 +1,9 @@
 podTemplate(yaml: '''
     apiVersion: v1
     kind: Pod
+    metadata:
+      labels:
+        com.joyrex2001.kubedock.runas-user: 1000
     spec:
       containers:
         - name: jnlp
