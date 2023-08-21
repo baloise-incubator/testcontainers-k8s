@@ -34,11 +34,6 @@ podTemplate(yaml: '''
     node(POD_LABEL) {
       container('maven') {
         echo POD_CONTAINER // displays 'maven'
-        sh 'pwd'
-        sh 'ls -al'
-
-        sh 'hostname'
-
         sh 'git clone https://github.com/baloise-incubator/testcontainers-k8s.git'
 
         sh 'export TESTCONTAINERS_RYUK_DISABLED=true'
@@ -46,6 +41,10 @@ podTemplate(yaml: '''
         sh 'export DOCKER_HOST=tcp://localhost:2475'
 
         sh 'cd testcontainers-k8s/examples/pure-testcontainers'
+
+        sh 'pwd'
+        sh 'ls -al'
+
         sh 'mvn test'
       }
     }
