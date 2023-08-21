@@ -11,7 +11,7 @@ podTemplate(yaml: '''
             runAsUser: 1000
         - name: maven
           workingDir: /home/jenkins/agent
-          image: maven:3.8.3-openjdk-17
+          image: maven:3.9.3-eclipse-temurin-17
           command:
             - sleep
           args:
