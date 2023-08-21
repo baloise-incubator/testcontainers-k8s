@@ -25,7 +25,7 @@ podTemplate(yaml: '''
           args:
             - server
             - '--runas-user'
-            - '1000'
+            - '1001130000'
           securityContext:
             runAsUser: 1000
           ports:
