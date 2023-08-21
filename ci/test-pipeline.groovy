@@ -45,7 +45,7 @@ podTemplate(yaml: '''
         sh 'pwd'
         sh 'ls -al'
 
-        sh 'mvn test'
+        sh 'mvn test -Dmaven.repo.local=./m2'
       }
     }
 }
