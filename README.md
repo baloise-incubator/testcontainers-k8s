@@ -1,5 +1,7 @@
 # testcontainers-k8s
 
+## Is the use case solved upstream?
+No  -> https://java.testcontainers.org/
 
 ## Possible Solutions
 
@@ -17,3 +19,5 @@
 
 Our fork of [testcontainers-java](https://github.com/baloise-incubator/testcontainers-java)
 
+Issues:
+-  https://github.com/testcontainers/testcontainers-java/issues/449 
