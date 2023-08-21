@@ -10,7 +10,8 @@ podTemplate(yaml: '''
           securityContext:
             runAsUser: 1000
         - name: maven
-          image: maven:3.8.1-jdk-8
+          workingDir: /home/jenkins/agent
+          image: maven:3.8.3-openjdk-17
           command:
             - sleep
           args:
