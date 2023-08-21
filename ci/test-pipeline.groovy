@@ -32,6 +32,9 @@ podTemplate(yaml: '''
             runAsUser: 1000
           ports:
             - containerPort: 2475
+          env:
+            - name: SERVICE_ACCOUNT
+              value: kubedock
     ''') {
     node(POD_LABEL) {
       container('maven') {
