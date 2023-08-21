@@ -26,7 +26,7 @@ podTemplate(yaml: '''
           securityContext:
             runAsUser: 1000
           ports:
-            containerPort: 2475
+            - containerPort: 2475
     ''') {
     node(POD_LABEL) {
       container('maven') {
