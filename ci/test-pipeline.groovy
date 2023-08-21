@@ -20,7 +20,7 @@ podTemplate(yaml: '''
         - name: kubedock
           image: joyrex2001/kubedock:0.12.0
           command:
-            - kubedock
+            - "./kubedock"
           args:
             - server
             - '--runas-user'
