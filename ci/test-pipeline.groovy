@@ -45,7 +45,7 @@ podTemplate(yaml: '''
         sh 'pwd'
         sh 'ls -al'
 
-        sh 'cd testcontainers-k8s/examples/pure-testcontainers && mvn test -Dmaven.repo.local=./m2'
+        sh 'cd testcontainers-k8s/examples/pure-testcontainers && mvn test -Dmaven.repo.local=/home/jenkins/agent/.m2'
       }
     }
 }
