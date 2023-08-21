@@ -86,6 +86,7 @@
       <groupId>org.testcontainers</groupId>
       <artifactId>postgresql</artifactId>
       <version>1.18.3</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
   <build>
