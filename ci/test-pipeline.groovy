@@ -45,7 +45,7 @@ podTemplate(yaml: '''
         sh 'pwd'
         sh 'ls -al'
 
-        sh 'cd testcontainers-k8s/examples/pure-testcontainers && mvn test -Dmaven.repo.local=/home/jenkins/agent/.m2'
+        sh 'export TESTCONTAINERS_RYUK_DISABLED=true && export TESTCONTAINERS_CHECKS_DISABLE=true && export DOCKER_HOST=tcp://localhost:2475 && cd testcontainers-k8s/examples/pure-testcontainers && mvn test -Dmaven.repo.local=/home/jenkins/agent/.m2'
       }
     }
 }
