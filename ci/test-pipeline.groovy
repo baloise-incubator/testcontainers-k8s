@@ -35,10 +35,12 @@ podTemplate(yaml: '''
         echo POD_CONTAINER // displays 'maven'
         sh 'hostname'
 
-        // sh 'export TESTCONTAINERS_RYUK_DISABLED=true'
-        // sh 'export TESTCONTAINERS_CHECKS_DISABLE=true'
-        // sh 'export DOCKER_HOST=tcp://127.0.0.1:2475'
-        // sh 'mvn test'
+        sh 'export TESTCONTAINERS_RYUK_DISABLED=true'
+        sh 'export TESTCONTAINERS_CHECKS_DISABLE=true'
+        sh 'export DOCKER_HOST=tcp://localhost:2475'
+
+        sh 'cd examples/pure-testcontainers'
+        sh 'mvn test'
       }
     }
 }
