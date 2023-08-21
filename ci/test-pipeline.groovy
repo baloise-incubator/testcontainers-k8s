@@ -17,11 +17,13 @@ podTemplate(yaml: '''
         - name: kubedock
           image: joyrex2001/kubedock:0.12.0
           command:
-            - sleep
+            - kubedock server --runas-user 1000
           args:
             - 99d
           securityContext:
             runAsUser: 1000
+          ports:
+            containerPort: 2475
     ''') {
     node(POD_LABEL) {
       container('maven') {
