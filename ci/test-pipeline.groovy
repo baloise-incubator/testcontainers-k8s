@@ -3,22 +3,25 @@ podTemplate(yaml: '''
     kind: Pod
     spec:
       containers:
-      - name: maven
-        image: maven:3.8.1-jdk-8
-        command:
-        - sleep
-        args:
-        - 99d
-        securityContext:
-          runAsUser: 1000
-      - name: kubedock
-        image: joyrex2001/kubedock:0.12.0
-        command:
-        - sleep
-        args:
-        - 99d
-        securityContext:
-          runAsUser: 1000
+        - name: jnlp
+          securityContext:
+            runAsUser: 1000
+        - name: maven
+          image: maven:3.8.1-jdk-8
+          command:
+            - sleep
+          args:
+            - 99d
+          securityContext:
+            runAsUser: 1000
+        - name: kubedock
+          image: joyrex2001/kubedock:0.12.0
+          command:
+            - sleep
+          args:
+            - 99d
+          securityContext:
+            runAsUser: 1000
     ''') {
     node(POD_LABEL) {
       container('maven') {
