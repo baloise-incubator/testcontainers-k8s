@@ -26,6 +26,7 @@ podTemplate(yaml: '''
             - server
             - '--runas-user'
             - '1001130000'
+            - '--reverse-proxy'
           securityContext:
             runAsUser: 1000
           ports:
