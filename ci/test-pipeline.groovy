@@ -27,7 +27,7 @@ podTemplate(yaml: '''
             - '--runas-user'
             - '1000'
             - '--service-account'
-            - kubedock
+            - 'system:serviceaccount:k8s-quark-devops:kubedock'
           securityContext:
             runAsUser: 1000
           ports:
