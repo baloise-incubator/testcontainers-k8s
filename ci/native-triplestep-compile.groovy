@@ -81,8 +81,8 @@ pipeline {
          
           dir('robert') {
             sh '''
-               cd target/native-sources
-               native-image $(cat native-image.args)
+               cd target
+               native-image $(cat native-sources/native-image.args)
                '''
           }
         }
