@@ -1,0 +1,10 @@
+*
+!target/native-sources/*
+!pom.xml
+!mvnw
+!.mvn/*
+!src/*
+!target/*-runner
+!target/*-runner.jar
+!target/lib/*
+!target/quarkus-app/*
