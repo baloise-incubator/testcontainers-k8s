@@ -25,7 +25,7 @@ pipeline {
             - name: kubedock
               image: joyrex2001/kubedock:0.12.0
               command:
-                - "./kubedock"
+                - "/app/kubedock"
               args:
                 - server
                 - '--runas-user'
