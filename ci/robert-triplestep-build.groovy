@@ -43,11 +43,14 @@ pipeline {
         '''
     }
   }
+  parameters {
+    string(name: 'PROJECT', defaultValue: 'robert', description: 'Project to build')
+  }
   stages {
     stage('Maven build') {
       steps {
         container('maven') {
-          dir('robert') {
+          dir(params.PROJECT) {
             sh '''mvn clean package -Dquarkus.package.type=native-sources -Dmaven.repo.local=/home/jenkins/agent/.m2'''
           }
         }
@@ -56,7 +59,7 @@ pipeline {
     stage('Native Build') {
       steps {
         container('mandrel') {
-          dir('robert') {
+          dir(params.PROJECT) {
             sh '''
                cd target/native-sources
                native-image $(cat native-image.args)
@@ -68,7 +71,7 @@ pipeline {
     stage('Docker Image Build') {
       steps {
         container('buildah') {
-          dir('robert') {
+          dir(params.PROJECT) {
             sh '''
                buildah bud -t robert:latest -f ./src/main/docker/Dockerfile.triplestep
                '''
