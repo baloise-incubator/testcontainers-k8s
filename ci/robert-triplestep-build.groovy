@@ -45,6 +45,8 @@ pipeline {
   }
   parameters {
     string(name: 'PROJECT', defaultValue: 'robert', description: 'Project to build')
+    string(name: 'IMAGE', defaultValue: 'robert:latest', description: 'Image name incl. tag')
+    string(name: 'DOCKERFILE', defaultValue: 'Dockerfile.triplestep', description: 'Name of Dockerfile')
   }
   stages {
     stage('Maven build') {
@@ -71,9 +73,7 @@ pipeline {
       steps {
         container('buildah') {
           dir(params.PROJECT) {
-            sh '''
-               buildah bud -t robert:latest -f ./src/main/docker/Dockerfile.triplestep
-               '''
+            sh "buildah bud -t ${params.IMAGE} -f ./src/main/docker/${params.DOCKERFILE}"
           }
         }
       }
