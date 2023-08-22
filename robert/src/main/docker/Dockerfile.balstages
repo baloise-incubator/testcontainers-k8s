@@ -1,0 +1,25 @@
+FROM maven:3.9.3-eclipse-temurin-17 AS package
+COPY . /code/
+WORKDIR /code
+RUN mvn clean package -Dquarkus.package.type=native-sources -Dmaven.repo.local=/home/jenkins/agent/.m2
+
+FROM quay.io/quarkus/ubi-quarkus-mandrel-builder-image:jdk-17 AS build
+USER quarkus
+COPY --from=package /code/target/ /code/target
+WORKDIR /code/target
+RUN native-image $(cat native-image.args)
+
+FROM quay.io/quarkus/quarkus-micro-image:2.0
+WORKDIR /work/
+COPY --from=build /code/target/*-runner /work/application
+
+# set up permissions for user `1001`
+RUN chmod 775 /work /work/application \
+  && chown -R 1001 /work \
+  && chmod -R "g+rwX" /work \
+  && chown -R 1001:root /work
+
+EXPOSE 8080
+USER 1001
+
+CMD ["./application", "-Dquarkus.http.host=0.0.0.0"]
