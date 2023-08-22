@@ -1,6 +1,7 @@
 pipeline {
   agent {
     kubernetes {
+      inheritFrom "default"
       yaml '''
         apiVersion: v1
         kind: Pod
@@ -24,7 +25,7 @@ pipeline {
             - name: kubedock
               image: joyrex2001/kubedock:0.12.0
               command:
-                - "./kubedock"
+                - "/app/kubedock"
               args:
                 - server
                 - '--runas-user'
@@ -52,7 +53,7 @@ pipeline {
                   export TESTCONTAINERS_CHECKS_DISABLE=true && \
                   export DOCKER_HOST=tcp://localhost:2475 && \
                   export QUARKUS_NATIVE_CONTAINER_RUNTIME=docker && \
-                  mvn install -Pnative -Dquarkus.native.container-build=true -Dmaven.repo.local=/home/jenkins/agent/.m2'''
+                  mvn install -Pnative -Dquarkus.native.container-build=true -Dmaven.repo.local=/home/jenkins/agent/workspace/.m2'''
           }
         }
       }
