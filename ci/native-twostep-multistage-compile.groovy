@@ -38,7 +38,7 @@ pipeline {
               env:
                 - name: SERVICE_ACCOUNT
                   value: kubedock    
-             - name: buildah
+            - name: buildah
               workingDir: /home/jenkins/agent
               image: niiku/buildah-rootless:latest
               command:
