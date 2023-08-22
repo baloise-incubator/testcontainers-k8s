@@ -18,8 +18,8 @@ class DefaultRepositoryIntegrationTest {
 
   // Containers declared as static fields will be shared between test methods.
   @Container
-  private static final PostgreSQLContainer<?> container =
-      new PostgreSQLContainer<>("postgres:13.7")
+  private static final BitnamiPostgreSQLContainer<?> container =
+      new BitnamiPostgreSQLContainer<>("bitnami/postgresql:15")
           .withDatabaseName("product_db")
           .withUsername("user")
           .withPassword("password")
