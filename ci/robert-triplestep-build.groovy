@@ -59,11 +59,8 @@ pipeline {
     stage('Native Build') {
       steps {
         container('mandrel') {
-          dir(params.PROJECT) {
-            sh '''
-               cd target/native-sources
-               native-image $(cat native-image.args)
-               '''
+          dir("${params.PROJECT}/target/native-sources") {
+            sh 'native-image $(cat native-image.args)'
           }
         }
       }
