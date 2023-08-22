@@ -47,7 +47,7 @@ pipeline {
           echo POD_CONTAINER // displays 'maven'
           // sh 'git clone https://github.com/baloise-incubator/testcontainers-k8s.git'
 
-          dir('examples/pure-testcontainers') {
+          dir('robert') {
             sh '''export TESTCONTAINERS_RYUK_DISABLED=true && \
                   export TESTCONTAINERS_CHECKS_DISABLE=true && \
                   export DOCKER_HOST=tcp://localhost:2475 && \
