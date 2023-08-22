@@ -47,8 +47,6 @@ pipeline {
     stage('Maven build') {
       steps {
         container('maven') {
-          echo POD_CONTAINER // displays 'maven'
-         
           dir('robert') {
             sh '''mvn clean package -Dquarkus.package.type=native-sources -Dmaven.repo.local=/home/jenkins/agent/.m2'''
           }
@@ -58,8 +56,6 @@ pipeline {
     stage('Native Build') {
       steps {
         container('mandrel') {
-          echo POD_CONTAINER // displays 'mandrel'
-         
           dir('robert') {
             sh '''
                cd target/native-sources
@@ -72,8 +68,6 @@ pipeline {
     stage('Docker Image Build') {
       steps {
         container('buildah') {
-          echo POD_CONTAINER // displays 'buildah'
-         
           dir('robert') {
             sh '''
                buildah bud -t robert:latest -f ./src/main/docker/Dockerfile.triplestep
