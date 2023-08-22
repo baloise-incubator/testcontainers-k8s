@@ -51,7 +51,7 @@ pipeline {
       steps {
         container('maven') {
           dir(params.PROJECT) {
-            sh '''mvn clean package -Dquarkus.package.type=native-sources -Dmaven.repo.local=/home/jenkins/agent/.m2'''
+            sh '''mvn clean package -Dquarkus.package.type=native-sources'''
           }
         }
       }
