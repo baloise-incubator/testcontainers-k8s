@@ -22,38 +22,41 @@ pipeline {
                 - 99d
               securityContext:
                 runAsUser: 1000
-            - name: kubedock
-              image: joyrex2001/kubedock:0.12.0
+            - name: buildah
+              workingDir: /home/jenkins/agent
+              image: niiku/buildah-rootless:latest
               command:
-                - "/app/kubedock"
+                - sleep
               args:
-                - server
-                - '--runas-user'
-                - '1001130000'
-                - '--reverse-proxy'
+                - 99d
               securityContext:
                 runAsUser: 1000
-              ports:
-                - containerPort: 2475
-              env:
-                - name: SERVICE_ACCOUNT
-                  value: kubedock
         '''
     }
   }
   stages {
-    stage('Run maven') {
+    stage('Maven build') {
       steps {
         container('maven') {
           echo POD_CONTAINER // displays 'maven'
-          // sh 'git clone https://github.com/baloise-incubator/testcontainers-k8s.git'
-
+         
           dir('robert') {
-            sh '''export TESTCONTAINERS_RYUK_DISABLED=true && \
-                  export TESTCONTAINERS_CHECKS_DISABLE=true && \
-                  export DOCKER_HOST=tcp://localhost:2475 && \
-                  export QUARKUS_NATIVE_CONTAINER_RUNTIME=unavailable && \
-                  mvn install -Pnative -Dquarkus.native.container-build=true -Dmaven.repo.local=/home/jenkins/agent/workspace/.m2'''
+            sh '''
+               mvn clean package -Dquarkus.package.type=native-sources -Dmaven.repo.local=/home/jenkins/agent/.m2
+               '''
+          }
+        }
+      }
+    }
+    stage('Native Image Build') {
+      steps {
+        container('buildah') {
+          echo POD_CONTAINER // displays 'buildah'
+         
+          dir('robert') {
+            sh '''
+               buildah bud -t robert:latest -f ./src/main/docker/Dockerfile.twostep-multistage
+               '''
           }
         }
       }
