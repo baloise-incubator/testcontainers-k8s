@@ -52,7 +52,7 @@ pipeline {
             sh '''export TESTCONTAINERS_RYUK_DISABLED=true && \
                   export TESTCONTAINERS_CHECKS_DISABLE=true && \
                   export DOCKER_HOST=tcp://localhost:2475 && \
-                  export PGDATA=/home/jenkins/agent/workspace/.m2/pg-data && mkdir $PGDATA && \
+                  export PGDATA=/home/jenkins/agent/workspace/.m2/pg-data && mkdir -p $PGDATA && \
                   buildah build -t robert:latest -f ./src/main/docker/Dockerfile.native-multistage
                '''
           }
