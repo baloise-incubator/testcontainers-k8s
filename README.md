@@ -14,6 +14,10 @@ No  -> https://java.testcontainers.org/
 * https://github.com/testcontainers/testcontainers-java/issues/1135
 
 
+### Alternative Framework
+
+* https://github.com/JeanBaptisteWATENBERG/junit5-kubernetes
+
 
 ## Resources
 
