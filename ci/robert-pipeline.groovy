@@ -51,6 +51,7 @@ pipeline {
             sh '''export TESTCONTAINERS_RYUK_DISABLED=true && \
                   export TESTCONTAINERS_CHECKS_DISABLE=true && \
                   export DOCKER_HOST=tcp://localhost:2475 && \
+                  export QUARKUS_NATIVE_CONTAINER_RUNTIME=docker && \
                   mvn install -Pnative -Dquarkus.native.container-build=true -Dmaven.repo.local=/home/jenkins/agent/.m2'''
           }
         }
