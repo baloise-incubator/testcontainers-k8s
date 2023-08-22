@@ -2,6 +2,8 @@ FROM quay.io/quarkus/ubi-quarkus-mandrel-builder-image:jdk-17 AS build
 COPY --chown=quarkus:root mvnw /code/mvnw
 COPY --chown=quarkus:root .mvn /code/.mvn
 COPY --chown=quarkus:root pom.xml /code/
+USER root
+RUN chmod 775 /code/mvnw
 USER quarkus
 WORKDIR /code
 RUN ./mvnw -B org.apache.maven.plugins:maven-dependency-plugin:3.1.2:go-offline
