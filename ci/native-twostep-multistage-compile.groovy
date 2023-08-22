@@ -51,7 +51,7 @@ pipeline {
     }
   }
   stages {
-    stage('Run maven') {
+    stage('Maven build') {
       steps {
         container('maven') {
           echo POD_CONTAINER // displays 'maven'
@@ -63,6 +63,10 @@ pipeline {
                   mvn clean package -Dquarkus.package.type=native-sources -Dmaven.repo.local=/home/jenkins/agent/.m2'''
           }
         }
+      }
+    }
+    stage('Native Image Build') {
+      steps {
         container('buildah') {
           echo POD_CONTAINER // displays 'buildah'
          
