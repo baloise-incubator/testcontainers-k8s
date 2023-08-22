@@ -2,7 +2,7 @@ FROM quay.io/quarkus/ubi-quarkus-mandrel-builder-image:jdk-17 AS build
 
 USER quarkus
 WORKDIR /code
-COPY target/native-sources /code/native-sources
+COPY target/native-sources /code
 RUN native-image $(cat native-image.args)
 
 ## Stage 2 : create the docker final image
