@@ -35,3 +35,14 @@ which has several difference compared to the original:
 
 Because of the mani small differences between bitnami and the original image it
 is a good idea to provide a custom implementation for the container.
+
+## Quarkus Customresource defined Testcontainer
+
+1) Defined [Bitnami PostreSQL Testcontainer](quarkus-testcontainers/src/test/java/com/baloise/codecamp/quarkus/BitnamiPostgreSQLContainer.java)
+2) Provide [Container with Custom Resource](quarkus-testcontainers/src/test/java/com/baloise/codecamp/quarkus/MyPostgresTestResource.java)
+3) Integrate in [Quarkus Testcase](quarkus-testcontainers/src/test/java/com/baloise/codecamp/quarkus/GreetingResourceTest.java)
+4) Deactivate datasource for devservices in [application.properties](quarkus-testcontainers/src/main/resources/application.properties)
+    ```properties
+       # disable datasource testcontainer
+       quarkus.datasource.devservices.enabled=false
+    ```

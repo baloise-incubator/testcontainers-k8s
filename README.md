@@ -22,6 +22,10 @@ No  -> https://java.testcontainers.org/
 
 * https://github.com/JeanBaptisteWATENBERG/junit5-kubernetes
 
+## Working Solution with Quarkus and PostgreSQL Testcontainer
+
+see [Detailed documentation](examples/PostgreSQLTestcontainer.md)
+
 ## Resources
 
 Our fork of [testcontainers-java](https://github.com/baloise-incubator/testcontainers-java)
