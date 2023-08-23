@@ -43,14 +43,19 @@ pipeline {
         '''
     }
   }
+  parameters {
+    string(name: 'PROJECT', defaultValue: 'robert', description: 'Project to build')
+    string(name: 'IMAGE', defaultValue: 'robert:latest', description: 'Image name incl. tag')
+    string(name: 'DOCKERFILE', defaultValue: 'Dockerfile.triplestep', description: 'Name of Dockerfile')
+  }
   stages {
     stage('Maven build') {
       steps {
         container('maven') {
-          echo POD_CONTAINER // displays 'maven'
-         
-          dir('robert') {
-            sh '''mvn clean package -Dquarkus.package.type=native-sources -Dmaven.repo.local=/home/jenkins/agent/.m2'''
+          dir(params.PROJECT) {
+            sh '''mvn clean package \
+              -Dquarkus.package.type=native-sources \
+              -Dmaven.repo.local=$(pwd)/.m2'''
           }
         }
       }
@@ -58,13 +63,8 @@ pipeline {
     stage('Native Build') {
       steps {
         container('mandrel') {
-          echo POD_CONTAINER // displays 'mandrel'
-         
-          dir('robert') {
-            sh '''
-               cd target/native-sources
-               native-image $(cat native-image.args)
-               '''
+          dir("${params.PROJECT}/target/native-sources") {
+            sh 'native-image $(cat native-image.args)'
           }
         }
       }
@@ -72,12 +72,8 @@ pipeline {
     stage('Docker Image Build') {
       steps {
         container('buildah') {
-          echo POD_CONTAINER // displays 'buildah'
-         
-          dir('robert') {
-            sh '''
-               buildah bud -t robert:latest -f ./src/main/docker/Dockerfile.triplestep
-               '''
+          dir(params.PROJECT) {
+            sh "buildah bud -t ${params.IMAGE} -f ./src/main/docker/${params.DOCKERFILE}"
           }
         }
       }
