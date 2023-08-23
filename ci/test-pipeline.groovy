@@ -7,6 +7,7 @@ pipeline {
         kind: Pod
         metadata:
           labels:
+            com.joyrex2001.kubedock.service-account: kubedock
             com.joyrex2001.kubedock.runas-user: 1000
         spec:
           containers:
