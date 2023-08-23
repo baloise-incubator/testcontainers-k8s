@@ -9,6 +9,8 @@ pipeline {
       labels:
         com.joyrex2001.kubedock.runas-user: 1000
     spec:
+      serviceAccount: kubedock
+      serviceAccountName: kubedock
       containers:
         - name: jnlp
           securityContext:
@@ -31,6 +33,8 @@ pipeline {
             - '--runas-user'
             - '1001130000'
             - '--reverse-proxy'
+            - '--service-account'
+            - 'kubedock'
           securityContext:
             runAsUser: 1000
           ports:
