@@ -7,7 +7,7 @@ pipeline {
     kind: Pod
     metadata:
       labels:
-            com.joyrex2001.kubedock.runas-user: 1001130000
+        com.joyrex2001.kubedock.runas-user: 1001130000
     spec:
       containers:
         - name: jnlp
@@ -30,9 +30,9 @@ pipeline {
             - server
             - '--runas-user'
             - '1001130000'
-                - '--reverse-proxy'
+            - '--reverse-proxy'
           securityContext:
-                runAsUser: 1001130000
+            runAsUser: 1001130000
           ports:
             - containerPort: 2475
           env:
@@ -44,18 +44,18 @@ pipeline {
   stages {
     stage('Run maven') {
       steps {
-      container('maven') {
-        echo POD_CONTAINER // displays 'maven'
+        container('maven') {
+          echo POD_CONTAINER // displays 'maven'
           // sh 'git clone https://github.com/baloise-incubator/testcontainers-k8s.git'
 
           dir('getting-started') {
             sh '''export TESTCONTAINERS_RYUK_DISABLED=true && \
                   export TESTCONTAINERS_CHECKS_DISABLE=true && \
                   export DOCKER_HOST=tcp://localhost:2475 && \
-                  export PGDATA=/home/jenkins/agent/pg-data && mkdir $PGDATA && \
-                  mvn test -Dmaven.repo.local=/home/jenkins/agent/.m2'''
+                  mvn clean test -Dmaven.repo.local=/home/jenkins/agent/.m2'''
           }
         }
       }
     }
+  }
 }
