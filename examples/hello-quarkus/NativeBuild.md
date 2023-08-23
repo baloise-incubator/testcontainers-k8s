@@ -20,7 +20,7 @@ https://k8s-quark-ci.baloise.dev/
 4) Starts maven-build with native compile argument.
 5) Build Dockerimage in last Dockerfile Stage.
 
-* see [Pipeline](../ci/robert-multistage-build.groovy)
+* see [Pipeline](../../ci/multistage-build.groovy)
 * see [Dockerfile](src/main/docker/Dockerfile.multistage)
 
 ## Two-Step Pipeline with Multistage Dockerbuild
@@ -34,7 +34,7 @@ https://k8s-quark-ci.baloise.dev/
     a) compiles native executable.
     b) builds Dockerimage in last Dockerfile Stage.
 
-* see [Pipeline](../ci/robert-twostep-multistage-build.groovy)
+* see [Pipeline](../../ci/twostep-multistage-build.groovy)
 * see [Dockerfile](src/main/docker/Dockerfile.twostep-multistage)
 
 ## Triple-Step Pipeline (_preferred_)
@@ -48,7 +48,7 @@ Runs three steps in Jenkins, running
 2) Starts mandrel-build (quay.io/quarkus/ubi-quarkus-mandrel-builder-image:jdk-17 builder-image) taking native-sources and compiles the natvie executable.
 3) Builds Dockerimage in buildah buildcontainer.
 
-* see [Pipeline](../ci/robert-triplestep-build.groovy)
+* see [Pipeline](../../ci/triplestep-build.groovy)
 * see [Dockerfile](src/main/docker/Dockerfile.triplestep)
 
 ## Buildah Triplestage
@@ -59,5 +59,5 @@ the used Dockerfile consists of three Build-Stages:
 2) From Mandrel-Image, compile native executable
 3) From Distro-Image, build dockerimage.
 
-* see [Pipeline](../ci/robert-triplestage-build.groovy)
+* see [Pipeline](../../ci/buildah-triplestage.groovy)
 * see [Dockerfile](src/main/docker/Dockerfile.buildah-triplestage)

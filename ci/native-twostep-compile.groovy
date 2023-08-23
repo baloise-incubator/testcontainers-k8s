@@ -56,7 +56,7 @@ pipeline {
         container('maven') {
           echo POD_CONTAINER // displays 'maven'
          
-          dir('robert') {
+          dir('examples/hello-quarkus') {
             sh '''export TESTCONTAINERS_RYUK_DISABLED=true && \
                   export TESTCONTAINERS_CHECKS_DISABLE=true && \
                   export DOCKER_HOST=tcp://localhost:2475 && \
@@ -66,7 +66,7 @@ pipeline {
         container('mandrel') {
           echo POD_CONTAINER // displays 'mandrel'
          
-          dir('robert') {
+          dir('examples/hello-quarkus') {
             sh '''
                cd target/native-sources
                native-image $(cat native-image.args)

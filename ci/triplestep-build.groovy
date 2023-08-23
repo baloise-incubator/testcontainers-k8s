@@ -44,8 +44,8 @@ pipeline {
     }
   }
   parameters {
-    string(name: 'PROJECT', defaultValue: 'robert', description: 'Project to build')
-    string(name: 'IMAGE', defaultValue: 'robert:latest', description: 'Image name incl. tag')
+    string(name: 'PROJECT', defaultValue: 'examples/hello-quarkus', description: 'Project to build')
+    string(name: 'IMAGE', defaultValue: 'hello-quarkus:latest', description: 'Image name incl. tag')
     string(name: 'DOCKERFILE', defaultValue: 'Dockerfile.triplestep', description: 'Name of Dockerfile')
   }
   stages {
