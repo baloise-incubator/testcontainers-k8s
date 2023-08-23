@@ -22,7 +22,6 @@ No  -> https://java.testcontainers.org/
 
 * https://github.com/JeanBaptisteWATENBERG/junit5-kubernetes
 
-
 ## Resources
 
 Our fork of [testcontainers-java](https://github.com/baloise-incubator/testcontainers-java)

@@ -1,12 +1,15 @@
 package com.baloise.codecamp.quarkus;
 
-import io.quarkus.test.junit.QuarkusTest;
-import org.junit.jupiter.api.Test;
-
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 
+import org.junit.jupiter.api.Test;
+
+import io.quarkus.test.junit.QuarkusTest;
+import io.quarkus.test.common.QuarkusTestResource;
+
 @QuarkusTest
+@QuarkusTestResource(value = MyPostgresTestResource.class, restrictToAnnotatedClass = true)
 public class GreetingResourceTest {
 
     @Test
