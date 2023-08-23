@@ -7,12 +7,12 @@ pipeline {
     kind: Pod
     metadata:
       labels:
-        com.joyrex2001.kubedock.runas-user: 1001130000
+        com.joyrex2001.kubedock.runas-user: 1000
     spec:
       containers:
         - name: jnlp
           securityContext:
-                runAsUser: 1001130000
+             runAsUser: 1000
         - name: maven
           workingDir: /home/jenkins/agent
           image: maven:3.9.3-eclipse-temurin-17
@@ -21,18 +21,18 @@ pipeline {
           args:
             - 99d
           securityContext:
-                runAsUser: 1001130000
+            runAsUser: 1000
         - name: kubedock
           image: joyrex2001/kubedock:0.12.0
           command:
-                - "/app/kubedock"
+             - "/app/kubedock"
           args:
             - server
             - '--runas-user'
             - '1001130000'
             - '--reverse-proxy'
           securityContext:
-            runAsUser: 1001130000
+            runAsUser: 1000
           ports:
             - containerPort: 2475
           env:
