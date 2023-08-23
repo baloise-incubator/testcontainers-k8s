@@ -40,7 +40,7 @@ pipeline {
         container('maven') {
           echo POD_CONTAINER // displays 'maven'
          
-          dir('examples/hello-quarkus') {
+          dir('examples/quarkus-native') {
             sh '''
                mvn clean package -Dquarkus.package.type=native-sources -Dmaven.repo.local=/home/jenkins/agent/.m2
                '''
@@ -53,9 +53,9 @@ pipeline {
         container('buildah') {
           echo POD_CONTAINER // displays 'buildah'
          
-          dir('examples/hello-quarkus') {
+          dir('examples/quarkus-native') {
             sh '''
-               buildah bud -t hello-quarkus:latest -f ./src/main/docker/Dockerfile.twostep-multistage
+               buildah bud -t quarkus-native:latest -f ./src/main/docker/Dockerfile.twostep-multistage
                '''
           }
         }

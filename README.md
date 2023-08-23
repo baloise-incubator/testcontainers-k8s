@@ -1,6 +1,6 @@
 # Native Image Build
 
-see [Description in hello-quarkus subproject](examples/hello-quarkus/NativeBuild.md)
+see [Description in quarkus-native subproject](examples/quarkus-native/NativeBuild.md)
 
 # testcontainers-k8s
 
