@@ -7,8 +7,8 @@ https://k8s-quark-ci.baloise.dev/
 # Requirements
 
 * Runs with jenkins-templated Docker buildcontainers
-* Runs in Openshift
-* Zero or Minimal Adjustments for generated Quarkus Dockerfiles
+* Runs in OpenShift
+* Zero or minimal Adjustments for generated Quarkus Dockerfiles
 
 # Variants
 
@@ -45,7 +45,7 @@ Runs three steps in Jenkins, running
     c) Buildah Container-Build.
 
 1) Starts maven-build with native-sources compile argument. This stage just prepares the native-compile build with java-binaries and native-image.args.
-2) Starts mandrel-build (quay.io/quarkus/ubi-quarkus-mandrel-builder-image:jdk-17 builder-image) taking native-sources and compiles the natvie executable.
+2) Starts mandrel-build (quay.io/quarkus/ubi-quarkus-mandrel-builder-image:jdk-17 builder-image) taking native-sources and compiles the native executable.
 3) Builds Dockerimage in buildah buildcontainer.
 
 * see [Pipeline](../ci/triplestep-build.groovy)
