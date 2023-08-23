@@ -16,7 +16,7 @@
     <maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
     <postgresql.version>42.5.0</postgresql.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <testcontainers.version>1.17.3</testcontainers.version>
+    <testcontainers.version>1.19.0</testcontainers.version>
     <spotless.version>2.27.0</spotless.version>
     <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
     <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
