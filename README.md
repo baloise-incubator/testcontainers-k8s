@@ -1,4 +1,4 @@
-# native image build
+# Native Image Build
 
 see [Description in robert subproject](robert/NativeBuild.md)
 
@@ -26,5 +26,8 @@ No  -> https://java.testcontainers.org/
 
 Our fork of [testcontainers-java](https://github.com/baloise-incubator/testcontainers-java)
 
-Issues:
--  https://github.com/testcontainers/testcontainers-java/issues/449 
+## Links
+
+- https://timmhirsens.de/posts/2019/07/testcontainers_on_jenkins_with_kubernetes/
+- https://jenkins-x.io/blog/2021/05/17/dont-use-docker/
+- https://github.com/testcontainers/testcontainers-java/issues/449 
