@@ -6,16 +6,15 @@ import org.testcontainers.containers.BindMode;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.containers.output.Slf4jLogConsumer;
-
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.slf4j.LoggerFactory.getLogger;
 
 import java.net.URI;
 import java.net.URL;
 import java.io.IOException;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.slf4j.LoggerFactory.getLogger;
 
 @Testcontainers
 public class NginxTest {

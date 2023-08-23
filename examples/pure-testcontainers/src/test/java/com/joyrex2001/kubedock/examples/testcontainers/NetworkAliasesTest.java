@@ -1,16 +1,14 @@
 package com.joyrex2001.kubedock.examples.testcontainers;
 
 import org.junit.jupiter.api.Test;
-
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.Network;
-
 import org.testcontainers.junit.jupiter.Testcontainers;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
 import java.lang.InterruptedException;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @Testcontainers
 public class NetworkAliasesTest {
