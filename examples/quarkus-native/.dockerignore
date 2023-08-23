@@ -1,4 +1,4 @@
-*
+src
 !target/native-sources/*
 !pom.xml
 !mvnw

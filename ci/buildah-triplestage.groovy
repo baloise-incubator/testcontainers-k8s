@@ -32,8 +32,8 @@ pipeline {
           echo POD_CONTAINER // displays 'maven'
           // sh 'git clone https://github.com/baloise-incubator/testcontainers-k8s.git'
 
-          dir('robert') {
-            sh '''buildah bud -t robert:latest -f ./src/main/docker/Dockerfile.buildah-triplestage
+          dir('examples/quarkus-native') {
+            sh '''buildah bud -t quarkus-native:latest -f ./src/main/docker/Dockerfile.buildah-triplestage
                '''
           }
         }

@@ -1,6 +1,6 @@
 # Native Image Build
 
-see [Description in robert subproject](robert/NativeBuild.md)
+see [documentation](examples/QuarkusNativeBuilds.md) of Quarkus native builds
 
 # testcontainers-k8s
 
