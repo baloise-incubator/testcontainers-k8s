@@ -36,6 +36,8 @@ which has several difference compared to the original:
 Because of the mani small differences between bitnami and the original image it
 is a good idea to provide a custom implementation for the container.
 
+[see jenkins pipeline for psql-testcontainers](../ci/testcontainer-example-bitnami-postgres.groovy)
+
 ## Quarkus Customresource defined Testcontainer
 
 1) Defined [Bitnami PostreSQL Testcontainer](quarkus-testcontainers/src/test/java/com/baloise/codecamp/quarkus/BitnamiPostgreSQLContainer.java)
@@ -46,3 +48,4 @@ is a good idea to provide a custom implementation for the container.
        # disable datasource testcontainer
        quarkus.datasource.devservices.enabled=false
     ```
+[see jenkins pipeline for quarkus-testcontainers](../ci/testcontainer-example-quarkus-postgres.groovy)
